@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFinance Dashboard</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAABG0lEQVQ4jZ2TvUpDQRCFv7v3JmtMYWVhYyP4AoKVYGXhA/gCYmcjdnZ2PkBewVcQK0FBCytBsLBJYRdCkJj9sbgTN8kGSTLVzpwzZ2bPLKiqME1EZBsIgG1r7bExZgFYBB6Bh+FweDMYDL4nORETwA5wZK09XF5eXvV9/0BVl4BF4FlVb3u93v1fwBpwbq09XVlZWV9YWCCKIkSEOI5RVZIkoSgKer3ec5qmJ8BVHXAO7LVarU4URcRxTJ7nZFlGmqZEUUQYhoRhyGg0otPp0G63z4DLGnAKHDvnMMaQJAlZlpFlGWmaorX/xhicc4jICXA5DhARF4YhWZaRJAnOOZxzOOeYjXNuLDnnLoDvyVORmf3+P/gB3CA0E2Gg8VwAAAAASUVORK5CYII=">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-gray-900">SmartFinance Dashboard</h1>
+                <div class="flex space-x-4">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                    <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition">
+                        <i class="fas fa-eye mr-2"></i>Investor Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Navigation Tabs -->
+        <div class="mb-8 border-b border-gray-200">
+            <nav class="-mb-px flex space-x-8">
+                <a href="#" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium" data-tab="dashboard">
+                    Dashboard Overview
+                </a>
+                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium" data-tab="data-entry">
+                    Data Entry
+                </a>
+                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium" data-tab="reports">
+                    Financial Reports
+                </a>
+                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium" data-tab="settings">
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <!-- Dashboard Overview Section -->
+        <div id="dashboard-section" class="tab-content">
+            <!-- KPI Widgets Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Revenue Growth -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">Revenue Growth</h3>
+                        <i class="fas fa-chart-line text-blue-500"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-900">+0.0%</p>
+                    <p class="text-sm text-gray-500 mt-2">vs. last month</p>
+                </div>
+
+                <!-- Profit Margin -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">Profit Margin</h3>
+                        <i class="fas fa-percentage text-green-500"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-900">0.0%</p>
+                    <p class="text-sm text-gray-500 mt-2">Current quarter</p>
+                </div>
+
+                <!-- Customer Acquisition Cost -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">CAC</h3>
+                        <i class="fas fa-users text-purple-500"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-900">$125</p>
+                    <p class="text-sm text-gray-500 mt-2">Per customer</p>
+                </div>
+
+                <!-- ROI -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">ROI</h3>
+                        <i class="fas fa-chart-pie text-orange-500"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-900">215%</p>
+                    <p class="text-sm text-gray-500 mt-2">Annual return</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- Revenue & Expense Trends -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Revenue & Expense Trends</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Cash Flow Analysis -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Cash Flow Analysis</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="cashFlowChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Health Section -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-semibold text-gray-700">Investor Readiness Score</h3>
+                    <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        Excellent
+                    </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-green-500 h-2.5 rounded-full progress-bar-animate" style="width: 85%"></div>
+                </div>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <p class="text-sm text-gray-500">Financial Health</p>
+                        <p class="text-lg font-semibold text-gray-900">92/100</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-500">Growth Rate</p>
+                        <p class="text-lg font-semibold text-gray-900">85/100</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm text-gray-500">Market Position</p>
+                        <p class="text-lg font-semibold text-gray-900">78/100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Entry Section -->
+        <div id="data-entry-section" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <h2 class="text-xl font-bold text-gray-900 mb-6">Financial Data Entry</h2>
+                
+                <!-- Sales & Revenue Form -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Sales & Revenue</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Revenue Amount
+                            </label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">$</span>
+                                </div>
+                                <input type="number" name="revenue" id="revenue" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Date
+                            </label>
+                            <input type="date" name="revenue-date" id="revenue-date" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expenses Form -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Expenses</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Expense Type
+                            </label>
+                            <select name="expense-type" id="expense-type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Fixed Costs</option>
+                                <option>Variable Costs</option>
+                                <option>Operating Expenses</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Amount
+                            </label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">$</span>
+                                </div>
+                                <input type="number" name="expense-amount" id="expense-amount" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Date
+                            </label>
+                            <input type="date" name="expense-date" id="expense-date" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assets & Equity Form -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-4">Assets & Equity</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Asset Value
+                            </label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">$</span>
+                                </div>
+                                <input type="number" name="asset-value" id="asset-value" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Asset Type
+                            </label>
+                            <select name="asset-type" id="asset-type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option>Current Assets</option>
+                                <option>Fixed Assets</option>
+                                <option>Intangible Assets</option>
+                                <option>Other Assets</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        Save Data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Reports Section -->
+        <div id="reports-section" class="tab-content hidden">
+            <!-- Reports content will be added here -->
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings-section" class="tab-content hidden">
+            <!-- Settings content will be added here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <p class="text-center text-gray-500 text-sm">
+                © 2024 SmartFinance Dashboard. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
